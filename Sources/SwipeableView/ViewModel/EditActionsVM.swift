@@ -9,7 +9,7 @@ import SwiftUI
 
 
 public struct Action: Identifiable {
-    public init(title: String, iconName: String, bgColor: Color, action: @escaping () -> ()?) {
+    public init(title: String, iconName: String? = nil, bgColor: Color, action: @escaping () -> ()?) {
         self.title = title
         self.iconName = iconName
         self.bgColor = bgColor
@@ -18,7 +18,7 @@ public struct Action: Identifiable {
     
     public let id: UUID = UUID.init()
     let title: String
-    let iconName: String
+    let iconName: String?
     let bgColor: Color
     let action: () -> ()?
 }

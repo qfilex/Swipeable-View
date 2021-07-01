@@ -25,20 +25,22 @@ public struct EditActions: View {
     
     fileprivate func makeActionView(_ action: Action, height: CGFloat) -> some View {
         return VStack (alignment: .center, spacing: 0){
-            #if os(macOS)
+            if((action.iconName) != nil) {
+                #if os(macOS)
             Image(action.iconName)
                 .font(.system(size: 20))
                 .padding(.bottom, 8)
             #endif
             #if os(iOS)
             if getWidth() > 35 {
-                Image(systemName: action.iconName)
+                Image(systemName: action.iconName!)
                     .font(.system(size: 20))
                     .padding(.bottom, 8)
                     .opacity(getWidth() < 30 ? 0.1 : 1 )
             }
-            
             #endif
+        }
+            
             if viewModel.actions.count < 4 && height > 50 {
                 
                 Text(getWidth() > 70 ? action.title : "")
@@ -140,7 +142,7 @@ public struct EditActions: View {
 struct EditActions_Previews: PreviewProvider {
     
     static var actions = [
-        Action(title: "No interest", iconName: "trash", bgColor: .red, action: {}),
+        Action(title: "No interest", iconName: nil, bgColor: .red, action: {}),
         Action(title: "Request offer", iconName: "doc.text", bgColor: .yellow, action: {}),
         Action(title: "Order", iconName: "doc.text.fill", bgColor: .red, action: {}),
         Action(title: "Order provided", iconName: "car", bgColor: .green, action: {}),

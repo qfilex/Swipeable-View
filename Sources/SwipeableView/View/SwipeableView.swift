@@ -176,14 +176,14 @@ struct SwipebleView_Previews: PreviewProvider {
     static var previews: some View {
         
         let left = [
-            Action(title: "Note", iconName: "pencil", bgColor: .red, action: {}),
-            Action(title: "Edit doc", iconName: "doc.text", bgColor: .yellow, action: {}),
-            Action(title: "New doc", iconName: "doc.text.fill", bgColor: .green, action: {})
+            Action(title: "Note", bgColor: .red, action: {}),
+            Action(title: "Edit doc", bgColor: .yellow, action: {}),
+            
         ]
         
         let right = [
-            Action(title: "Note", iconName: "pencil", bgColor: .blue, action: {}),
-            Action(title: "Edit doc", iconName: "doc.text", bgColor: .yellow, action: {})
+            Action(title: "Note", bgColor: .blue, action: {}),
+          
         ]
         
         return GeometryReader { reader in
@@ -203,7 +203,7 @@ struct SwipebleView_Previews: PreviewProvider {
                 leftActions: left,
                 rightActions: right,
                 rounded: true
-                ).frame(height: 90)
+                ).frame(height: 64)
                 HStack {
                     Text("Container:")
                         .bold()
